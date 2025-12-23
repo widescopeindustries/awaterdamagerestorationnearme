@@ -27,7 +27,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:1-800-555-0000"
+              href="tel:888-472-6447"
               className="w-full sm:w-auto flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_40px_-10px_rgba(239,68,68,0.5)] hover:shadow-[0_0_60px_-15px_rgba(239,68,68,0.6)]"
             >
               <Phone className="h-6 w-6 fill-current" />
@@ -127,7 +127,7 @@ export default function Home() {
                   ))}
                 </ul>
                 <div className="pt-6">
-                  <a href="tel:1-800-555-0000" className="inline-flex items-center text-blue-600 font-bold hover:text-blue-700">
+                  <a href="tel:888-472-6447" className="inline-flex items-center text-blue-600 font-bold hover:text-blue-700">
                     Get Your Free Quote Now →
                   </a>
                 </div>
@@ -164,11 +164,11 @@ export default function Home() {
             Call the best water damage restoration company near you immediately.
           </p>
           <a
-            href="tel:1-800-555-0000"
+            href="tel:888-472-6447"
             className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg"
           >
             <Phone className="h-6 w-6 fill-current" />
-            CALL 1-800-555-0000
+            CALL 888-472-6447
           </a>
         </div>
       </section>
