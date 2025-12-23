@@ -38,7 +38,11 @@ export default function RootLayout({
         <footer className="bg-slate-900 text-slate-300 py-12">
           <div className="container mx-auto px-4 text-center">
             <p>&copy; {new Date().getFullYear()} A Water Damage Restoration Near Me. All rights reserved.</p>
-            <p className="mt-2 text-sm text-slate-500">Licensed & Insured • 24/7 Emergency Response</p>
+            <p className="mt-4 text-xs text-slate-500 max-w-2xl mx-auto leading-relaxed">
+              A Water Damage Restoration Near Me is a referral service that connects homeowners with local service providers.
+              All contractors are independent and represent their own companies. We do not warrant or guarantee any work performed.
+              It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed.
+            </p>
           </div>
         </footer>
       </body>
