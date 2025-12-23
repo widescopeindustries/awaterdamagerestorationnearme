@@ -60,8 +60,8 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               { icon: Clock, label: "60 Min Response", sub: "On-site fast" },
-              { icon: ShieldCheck, label: "Licensed & Insured", sub: "Fully certified" },
-              { icon: CheckCircle2, label: "Direct Billing", sub: "We handle insurance" },
+              { icon: ShieldCheck, label: "Licensed & Insured", sub: "Certified Pros" },
+              { icon: CheckCircle2, label: "Direct Billing", sub: "Insurance Accepted" },
               { icon: Award, label: "Top Rated", sub: "5-Star Service" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-2">
