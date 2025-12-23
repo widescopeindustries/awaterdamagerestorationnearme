@@ -3,12 +3,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 
+
 type Props = {
-    params: { city: string };
+    params: Promise<{ city: string }>;
 };
 
 // Helper: Convert slug "austin-tx" to "Austin, TX"
 function formatCity(slug: string): string {
+    if (!slug) return "";
     const parts = slug.split("-");
     if (parts.length > 1 && parts[parts.length - 1].length === 2) {
         // Has state code
@@ -23,12 +25,13 @@ function formatCity(slug: string): string {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const city = formatCity(params.city);
+    const { city: citySlug } = await params;
+    const city = formatCity(citySlug);
     return {
         title: `Water Damage Restoration ${city} | 24/7 Emergency Service`,
         description: `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call now for emergency cleanup near you using our local 888 number.`,
         alternates: {
-            canonical: `https://awaterdamagerestorationnearme.com/locations/${params.city}`,
+            canonical: `https://awaterdamagerestorationnearme.com/locations/${citySlug}`,
         },
     };
 }
@@ -36,6 +39,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Helper: Get state-specific content
 function getStateInfo(citySlug: string) {
+    if (!citySlug) return {
+        region: "California",
+        alert: "Emergency Response Teams",
+        climate: "In California, sudden storms and flash floods can cause devastating damage. We understand the local terrain and building codes.",
+        common_issues: ["Flash flooding recovery", "Mudslide cleanup support", "Burst pipes (dry rot)", "Coastal storm surges"]
+    };
+
     if (citySlug.endsWith("-wa")) {
         return {
             region: "Washington",
@@ -61,9 +71,10 @@ function getStateInfo(citySlug: string) {
     }
 }
 
-export default function CityPage({ params }: Props) {
-    const city = formatCity(params.city);
-    const stateInfo = getStateInfo(params.city);
+export default async function CityPage({ params }: Props) {
+    const { city: citySlug } = await params;
+    const city = formatCity(citySlug);
+    const stateInfo = getStateInfo(citySlug);
 
     return (
         <div className="flex flex-col min-h-screen">
