@@ -5,14 +5,14 @@ import { ALL_LOCATIONS } from '@/lib/locations';
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: 'https://awaterdamagerestorationnearme.com',
+            url: 'https://www.awaterdamagerestorationnearme.com',
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 1,
         },
 
         ...ALL_LOCATIONS.map((slug) => ({
-            url: `https://awaterdamagerestorationnearme.com/locations/${slug}`,
+            url: `https://www.awaterdamagerestorationnearme.com/locations/${slug}`,
             lastModified: new Date(),
             changeFrequency: 'daily' as const,
             priority: 0.8,

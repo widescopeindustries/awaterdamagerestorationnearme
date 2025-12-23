@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: `Water Damage Restoration ${city} | 24/7 Emergency Service`,
         description: `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call now for emergency cleanup near you using our local 888 number.`,
         alternates: {
-            canonical: `https://awaterdamagerestorationnearme.com/locations/${citySlug}`,
+            canonical: `https://www.awaterdamagerestorationnearme.com/locations/${citySlug}`,
         },
     };
 }

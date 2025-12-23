@@ -1,4 +1,16 @@
+import Link from "next/link";
+import Link from "next/link";
 import type { Metadata } from "next";
+
+// ... (existing imports)
+
+// ... (inside footer)
+<div className="mt-4 flex justify-center gap-6 text-sm text-slate-400">
+  <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+  <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+</div>
+          </div >
+        </footer >
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -13,7 +25,7 @@ export const metadata: Metadata = {
   title: "Water Damage Restoration Near Me | 24/7 Emergency Service",
   description: "Immediate water damage restoration, cleanup, and removal. Licensed experts arriving in 60 mins. Direct insurance billing. Call for 24/7 emergency service.",
   keywords: "water damage restoration near me, water damage restoration service near me, water damage restoration companies near me, water damage restoration services near me, water damage restoration company near me",
-  metadataBase: new URL('https://awaterdamagerestorationnearme.com'),
+  metadataBase: new URL('https://www.awaterdamagerestorationnearme.com'),
 };
 
 export default function RootLayout({
@@ -43,6 +55,10 @@ export default function RootLayout({
               All contractors are independent and represent their own companies. We do not warrant or guarantee any work performed.
               It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed.
             </p>
+            <div className="mt-6 flex justify-center gap-6 text-sm text-slate-400">
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </div>
           </div>
         </footer>
       </body>

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/private/',
         },
-        sitemap: 'https://awaterdamagerestorationnearme.com/sitemap.xml',
+        sitemap: 'https://www.awaterdamagerestorationnearme.com/sitemap.xml',
     }
 }
