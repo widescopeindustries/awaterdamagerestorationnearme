@@ -1,4 +1,5 @@
-import { Phone, CheckCircle2, ShieldCheck, Clock, Award } from "lucide-react";
+import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -151,6 +152,36 @@ export default function Home() {
                 <div className="text-sm font-bold text-slate-900">- Sarah J., Verified Customer</div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* California Emergency Response Areas */}
+      <section className="py-20 bg-white border-t border-slate-100">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-8 text-center">
+            Critical Response Areas: California Flood Crisis
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              "Los Angeles, CA", "San Diego, CA", "San Jose, CA", "San Francisco, CA",
+              "Fresno, CA", "Sacramento, CA", "Long Beach, CA", "Oakland, CA",
+              "Bakersfield, CA", "Anaheim, CA", "Santa Ana, CA", "Riverside, CA",
+              "Stockton, CA", "Chula Vista, CA", "Irvine, CA", "Fremont, CA",
+              "San Bernardino, CA", "Modesto, CA", "Fontana, CA", "Santa Clarita, CA"
+            ].map((city) => {
+              const slug = city.toLowerCase().replace(/,\s/g, "-").replace(/\s/g, "-");
+              return (
+                <Link
+                  key={city}
+                  href={`/locations/${slug}`}
+                  className="flex items-center gap-2 p-4 rounded-lg border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all text-slate-600 hover:text-blue-600 font-medium"
+                >
+                  <MapPin className="h-4 w-4 shrink-0" />
+                  {city}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
