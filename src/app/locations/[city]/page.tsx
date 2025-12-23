@@ -33,8 +33,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
+
+// Helper: Get state-specific content
+function getStateInfo(citySlug: string) {
+    if (citySlug.endsWith("-wa")) {
+        return {
+            region: "Washington",
+            alert: "Storm & Flood Recovery Teams",
+            climate: "While the Pacific Northwest is known for rain, sudden storms and basement flooding require expert attention. We specialize in sump pump failures and heavy rain saturation.",
+            common_issues: ["Basement flooding from heavy rains", "Sump pump failures", "Mold growth from moisture", "Storm drain backups"]
+        };
+    } else if (citySlug.endsWith("-or")) {
+        return {
+            region: "Oregon",
+            alert: "Valley Flood Response",
+            climate: "Oregon's seasonal rainfall can overwhelm drainage systems. We provide specialized drying for crawl spaces and basements common in the region.",
+            common_issues: ["Crawl space water damage", "River flooding response", "Roof leaks from moss/debris", "Groundwater saturation"]
+        };
+    } else {
+        // Default to CA
+        return {
+            region: "California",
+            alert: "Emergency Response Teams",
+            climate: "In California, sudden storms and flash floods can cause devastating damage. We understand the local terrain and building codes.",
+            common_issues: ["Flash flooding recovery", "Mudslide cleanup support", "Burst pipes (dry rot)", "Coastal storm surges"]
+        };
+    }
+}
+
 export default function CityPage({ params }: Props) {
     const city = formatCity(params.city);
+    const stateInfo = getStateInfo(params.city);
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -49,7 +78,7 @@ export default function CityPage({ params }: Props) {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
                         </span>
-                        Emergency Response Teams in {city} Available Now
+                        {stateInfo.alert} in {city} Available Now
                     </div>
 
                     <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
@@ -116,13 +145,12 @@ export default function CityPage({ params }: Props) {
                             <h3 className="text-2xl font-bold text-slate-900">Why Choose Us in {city}?</h3>
                             <p className="text-slate-600">
                                 Water damage requires immediate action to minimize structural damage and prevent mold growth.
-                                In {city}, we understand the local climate and common building types, allowing us to provide tailored restoration solutions.
+                                {stateInfo.climate}
                             </p>
                             <ul className="space-y-4">
                                 {[
                                     `Rapid response throughout ${city} area`,
-                                    "Advanced water extraction equipment",
-                                    "Complete structural drying and dehumidification",
+                                    ...stateInfo.common_issues,
                                     "Content cleaning and restoration",
                                     "Mold remediation and prevention"
                                 ].map((item, i) => (

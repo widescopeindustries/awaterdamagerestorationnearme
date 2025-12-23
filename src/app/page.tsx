@@ -1,5 +1,21 @@
 import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
 import Link from "next/link";
+import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS } from "@/lib/locations";
+
+// Helper: Convert slug "austin-tx" to "Austin, TX"
+function formatCity(slug: string): string {
+  const parts = slug.split("-");
+  if (parts.length > 1 && parts[parts.length - 1].length === 2) {
+    // Has state code
+    const state = parts.pop()?.toUpperCase();
+    const city = parts.map((p) => p.charAt(0).toUpperCase() + p.slice(1)).join(" ");
+    return `${city}, ${state}`;
+  }
+  return slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
 export default function Home() {
   return (
@@ -156,32 +172,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* California Emergency Response Areas */}
+
+      {/* Service Areas */}
       <section className="py-20 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-8 text-center">
-            Critical Response Areas: California Flood Crisis
+          <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-12 text-center">
+            West Coast Water Damage Response Zones
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "Los Angeles, CA", "San Diego, CA", "San Jose, CA", "San Francisco, CA",
-              "Fresno, CA", "Sacramento, CA", "Long Beach, CA", "Oakland, CA",
-              "Bakersfield, CA", "Anaheim, CA", "Santa Ana, CA", "Riverside, CA",
-              "Stockton, CA", "Chula Vista, CA", "Irvine, CA", "Fremont, CA",
-              "San Bernardino, CA", "Modesto, CA", "Fontana, CA", "Santa Clarita, CA"
-            ].map((city) => {
-              const slug = city.toLowerCase().replace(/,\s/g, "-").replace(/\s/g, "-");
-              return (
-                <Link
-                  key={city}
-                  href={`/locations/${slug}`}
-                  className="flex items-center gap-2 p-4 rounded-lg border border-slate-200 hover:border-blue-500 hover:shadow-md transition-all text-slate-600 hover:text-blue-600 font-medium"
-                >
-                  <MapPin className="h-4 w-4 shrink-0" />
-                  {city}
-                </Link>
-              );
-            })}
+
+          <div className="space-y-12">
+            {/* California */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-blue-600 rounded-full"></span>
+                California Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {CA_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-blue-50 text-slate-600 hover:text-blue-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Washington */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-teal-600 rounded-full"></span>
+                Washington Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {WA_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-teal-50 text-slate-600 hover:text-teal-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Oregon */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-green-600 rounded-full"></span>
+                Oregon Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {OR_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-green-50 text-slate-600 hover:text-green-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>
