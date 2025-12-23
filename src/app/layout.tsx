@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
+import { AlertTriangle } from "lucide-react";
+
 export const metadata: Metadata = {
   title: "Water Damage Restoration Near Me | 24/7 Emergency Service",
   description: "Immediate water damage restoration, cleanup, and removal. Licensed experts arriving in 60 mins. Direct insurance billing. Call for 24/7 emergency service.",
@@ -22,6 +24,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={cn(inter.className, "min-h-screen bg-background antialiased")}>
+        <div className="bg-red-600 text-white px-4 py-2 text-center relative overflow-hidden animate-pulse">
+          <div className="container mx-auto font-bold flex items-center justify-center gap-2 text-sm md:text-base">
+            <AlertTriangle className="h-5 w-5 shrink-0" />
+            <span className="uppercase tracking-wide">California Flood Alert: Emergency Response Teams Deployed</span>
+          </div>
+        </div>
         <JsonLd />
         <Header />
         <main className="flex-1">
