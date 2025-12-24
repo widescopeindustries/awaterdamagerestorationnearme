@@ -21,7 +21,7 @@ async function main() {
 
     const indexing = google.indexing({ version: 'v3', auth });
 
-    const siteUrl = 'https://awaterdamagerestorationnearme.com';
+    const siteUrl = 'https://www.awaterdamagerestorationnearme.com';
     // Include home page + all location pages
     const urls = [
         siteUrl,

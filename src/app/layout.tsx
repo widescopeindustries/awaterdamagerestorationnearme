@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -27,6 +29,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={cn(inter.className, "min-h-screen bg-background antialiased")}>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-SB3GBEFXTD"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-SB3GBEFXTD');
+          `}
+        </Script>
         <div className="bg-red-600 text-white px-4 py-2 text-center relative overflow-hidden animate-pulse">
           <div className="container mx-auto font-bold flex items-center justify-center gap-2 text-sm md:text-base">
             <AlertTriangle className="h-5 w-5 shrink-0" />
