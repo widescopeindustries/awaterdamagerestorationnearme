@@ -1,6 +1,6 @@
 import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
 import Link from "next/link";
-import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS, TX_LOCATIONS, FL_LOCATIONS } from "@/lib/locations";
+import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS, TX_LOCATIONS, FL_LOCATIONS, EAST_LOCATIONS, MID_ATLANTIC_LOCATIONS, MIDWEST_LOCATIONS, SOUTHWEST_LOCATIONS } from "@/lib/locations";
 
 // Helper: Convert slug "austin-tx" to "Austin, TX"
 function formatCity(slug: string): string {
@@ -218,6 +218,97 @@ export default function Home() {
                       key={slug}
                       href={`/locations/${slug}`}
                       className="text-sm p-3 rounded-md bg-slate-50 hover:bg-orange-50 text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+            {/* East Coast */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
+                East Coast Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {EAST_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Mid-Atlantic */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-violet-600 rounded-full"></span>
+                Mid-Atlantic Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {MID_ATLANTIC_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-violet-50 text-slate-600 hover:text-violet-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Midwest */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-amber-500 rounded-full"></span>
+                Midwest Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {MIDWEST_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-amber-50 text-slate-600 hover:text-amber-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Southwest */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-rose-500 rounded-full"></span>
+                Southwest & Mountain Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {SOUTHWEST_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-rose-50 text-slate-600 hover:text-rose-600 transition-colors flex items-center gap-2 truncate"
                     >
                       <MapPin className="h-3 w-3 shrink-0" />
                       {city.split(',')[0]}

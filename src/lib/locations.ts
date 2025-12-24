@@ -41,10 +41,44 @@ export const FL_LOCATIONS = [
     "fort-myers-fl", "hialeah-fl", "naples-fl", "sarasota-fl", "tallahassee-fl"
 ];
 
+// East Coast (NY, NJ, PA, MA)
+export const EAST_LOCATIONS = [
+    "new-york-ny", "buffalo-ny", "rochester-ny", "yonkers-ny", "albany-ny",
+    "newark-nj", "jersey-city-nj", "paterson-nj", "elizabeth-nj",
+    "philadelphia-pa", "pittsburgh-pa", "allentown-pa",
+    "boston-ma", "worcester-ma", "springfield-ma", "cambridge-ma"
+];
+
+// Mid-Atlantic (VA, NC, SC, GA)
+export const MID_ATLANTIC_LOCATIONS = [
+    "virginia-beach-va", "norfolk-va", "richmond-va", "chesapeake-va",
+    "charlotte-nc", "raleigh-nc", "greensboro-nc", "durham-nc",
+    "charleston-sc", "columbia-sc", "north-charleston-sc", "mount-pleasant-sc",
+    "atlanta-ga", "savannah-ga", "augusta-ga", "marietta-ga"
+];
+
+// Midwest (IL, OH, MI)
+export const MIDWEST_LOCATIONS = [
+    "chicago-il", "aurora-il", "naperville-il", "joliet-il",
+    "columbus-oh", "cleveland-oh", "cincinnati-oh", "toledo-oh",
+    "detroit-mi", "grand-rapids-mi", "warren-mi", "sterling-heights-mi"
+];
+
+// Southwest & Mountain (AZ, NV, CO)
+export const SOUTHWEST_LOCATIONS = [
+    "phoenix-az", "tucson-az", "mesa-az", "chandler-az", "scottsdale-az",
+    "las-vegas-nv", "henderson-nv", "reno-nv",
+    "denver-co", "colorado-springs-co", "aurora-co", "fort-collins-co"
+];
+
 export const ALL_LOCATIONS = [
     ...CA_LOCATIONS,
     ...OR_LOCATIONS,
     ...WA_LOCATIONS,
     ...TX_LOCATIONS,
-    ...FL_LOCATIONS
+    ...FL_LOCATIONS,
+    ...EAST_LOCATIONS,
+    ...MID_ATLANTIC_LOCATIONS,
+    ...MIDWEST_LOCATIONS,
+    ...SOUTHWEST_LOCATIONS
 ];
