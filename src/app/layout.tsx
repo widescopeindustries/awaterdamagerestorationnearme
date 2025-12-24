@@ -1,25 +1,13 @@
-import Link from "next/link";
-import Link from "next/link";
 import type { Metadata } from "next";
-
-// ... (existing imports)
-
-// ... (inside footer)
-<div className="mt-4 flex justify-center gap-6 text-sm text-slate-400">
-  <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-  <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
-</div>
-          </div >
-        </footer >
+import Link from "next/link";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { JsonLd } from "@/components/json-ld";
 import { cn } from "@/lib/utils";
+import { AlertTriangle } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
-
-import { AlertTriangle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Water Damage Restoration Near Me | 24/7 Emergency Service",
