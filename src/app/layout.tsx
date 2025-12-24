@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   description: "Immediate water damage restoration, cleanup, and removal. Licensed experts arriving in 60 mins. Direct insurance billing. Call for 24/7 emergency service.",
   keywords: "water damage restoration near me, water damage restoration service near me, water damage restoration companies near me, water damage restoration services near me, water damage restoration company near me",
   metadataBase: new URL('https://www.awaterdamagerestorationnearme.com'),
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 export default function RootLayout({
