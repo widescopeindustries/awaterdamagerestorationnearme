@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const city = formatCity(citySlug);
     return {
         title: `Water Damage Restoration ${city} | 24/7 Emergency Service`,
-        description: `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call now for emergency cleanup near you using our local 888 number.`,
+        description: `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call 888-472-6447 for 24/7 emergency cleanup near you.`,
         alternates: {
             canonical: `https://www.awaterdamagerestorationnearme.com/locations/${citySlug}`,
         },

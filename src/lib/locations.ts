@@ -27,8 +27,24 @@ export const WA_LOCATIONS = [
     "pasco-wa", "marysville-wa", "redmond-wa"
 ];
 
+// Texas Cities
+export const TX_LOCATIONS = [
+    "houston-tx", "galveston-tx", "san-antonio-tx", "austin-tx",
+    "dallas-tx", "fort-worth-tx", "corpus-christi-tx", "arlington-tx",
+    "sugar-land-tx", "san-marcos-tx", "plano-tx", "irving-tx"
+];
+
+// Florida Cities
+export const FL_LOCATIONS = [
+    "miami-fl", "tampa-fl", "orlando-fl", "jacksonville-fl",
+    "fort-lauderdale-fl", "st-petersburg-fl", "west-palm-beach-fl",
+    "fort-myers-fl", "hialeah-fl", "naples-fl", "sarasota-fl", "tallahassee-fl"
+];
+
 export const ALL_LOCATIONS = [
     ...CA_LOCATIONS,
     ...OR_LOCATIONS,
-    ...WA_LOCATIONS
+    ...WA_LOCATIONS,
+    ...TX_LOCATIONS,
+    ...FL_LOCATIONS
 ];

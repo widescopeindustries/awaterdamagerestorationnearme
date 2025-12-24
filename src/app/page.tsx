@@ -1,6 +1,6 @@
 import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
 import Link from "next/link";
-import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS } from "@/lib/locations";
+import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS, TX_LOCATIONS, FL_LOCATIONS } from "@/lib/locations";
 
 // Helper: Convert slug "austin-tx" to "Austin, TX"
 function formatCity(slug: string): string {
@@ -177,10 +177,55 @@ export default function Home() {
       <section className="py-20 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-12 text-center">
-            West Coast Water Damage Response Zones
+            Nationwide Water Damage Response Zones
           </h2>
 
           <div className="space-y-12">
+            {/* Texas */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-red-600 rounded-full"></span>
+                Texas Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {TX_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-red-50 text-slate-600 hover:text-red-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Florida */}
+            <div>
+              <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <span className="w-2 h-8 bg-orange-500 rounded-full"></span>
+                Florida Service Areas
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+                {FL_LOCATIONS.map((slug) => {
+                  const city = formatCity(slug);
+                  return (
+                    <Link
+                      key={slug}
+                      href={`/locations/${slug}`}
+                      className="text-sm p-3 rounded-md bg-slate-50 hover:bg-orange-50 text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 truncate"
+                    >
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      {city.split(',')[0]}
+                    </Link>
+                  )
+                })}
+              </div>
+            </div>
             {/* California */}
             <div>
               <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
