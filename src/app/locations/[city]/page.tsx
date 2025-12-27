@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const detail = CITY_DETAILS[citySlug];
 
     const description = detail
-        ? `${detail.description} Top-rated water damage restoration in ${city}. Call 888-472-6447.`
-        : `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call 888-472-6447 for 24/7 emergency cleanup near you.`;
+        ? `${detail.description} 24/7 Water Damage Restoration. Licensed experts, 60-min response. Call 888-472-6447.`
+        : `24/7 Water Damage Restoration in ${city}. Licensed experts, 60-min response, direct billing. Call 888-472-6447 for emergency cleanup.`;
 
     return {
         title: `Water Damage Restoration ${city} | 24/7 Emergency Service`,

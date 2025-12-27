@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Water Damage Restoration Near Me | 24/7 Emergency Service",
-  description: "Immediate water damage restoration, cleanup, and removal. Licensed experts arriving in 60 mins. Direct insurance billing. Call 888-472-6447 for 24/7 emergency service.",
+  description: "Immediate water damage restoration. Licensed experts in 60 mins. Direct insurance billing. Call 888-472-6447 for 24/7 emergency service.",
   keywords: "water damage restoration near me, water damage restoration service near me, water damage restoration companies near me, water damage restoration services near me, water damage restoration company near me",
   metadataBase: new URL('https://www.awaterdamagerestorationnearme.com'),
   robots: {
