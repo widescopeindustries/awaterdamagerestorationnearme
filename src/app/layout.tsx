@@ -72,9 +72,32 @@ export default function RootLayout({
               All contractors are independent and represent their own companies. We do not warrant or guarantee any work performed.
               It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed.
             </p>
-            <div className="mt-6 flex justify-center gap-6 text-sm text-slate-400">
+            <div className="mt-6 flex justify-center gap-6 text-sm text-slate-400 mb-8">
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            </div>
+
+            <div className="border-t border-slate-800 pt-8 mt-8">
+              <div className="flex flex-col items-center gap-4">
+                <div className="max-w-md mx-auto">
+                  <p className="text-sm font-semibold text-slate-300 mb-2">Service-Disabled Veteran-Owned Small Business</p>
+                  <p className="text-xs text-slate-500 mb-4">
+                    Proudly owned and operated by Widescope Industries LLC, a Texas-based SDVOSB officially certified by the U.S. Small Business Administration (SBA).
+                  </p>
+                  <a
+                    href="https://veterans.certify.sba.gov/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-900/30 border border-blue-800 rounded text-blue-200 hover:bg-blue-900/50 hover:text-white transition-colors text-xs font-medium"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    Verify SBA Certification
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
