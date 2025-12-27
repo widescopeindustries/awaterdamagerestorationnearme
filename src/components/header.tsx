@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Phone, Droplets } from "lucide-react";
+import Image from "next/image";
+import { Phone } from "lucide-react";
 
 export function Header() {
     return (
@@ -7,12 +8,24 @@ export function Header() {
             <div className="container mx-auto flex h-20 items-center justify-between px-4">
                 {/* Logo / Brand - Optimized for "A" Strategy */}
                 <Link href="/" className="flex items-center space-x-2 font-bold text-xl md:text-2xl text-slate-900">
-                    <div className="bg-blue-600 p-2 rounded-lg text-white">
-                        <Droplets className="h-6 w-6" />
+                    <div className="relative h-12 w-12 shrink-0">
+                        <Image
+                            src="/logo.png"
+                            alt="A Water Damage Restoration Logo"
+                            fill
+                            className="object-contain"
+                            priority
+                        />
                     </div>
                     <span className="hidden md:inline-block">A Water Damage Restoration</span>
                     <span className="md:hidden">A.W.D.R.</span>
                 </Link>
+
+                <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <Link href="/about" className="hover:text-red-600 transition-colors">
+                        About
+                    </Link>
+                </nav>
 
                 {/* Emergency CTA */}
                 <div className="flex items-center gap-4">

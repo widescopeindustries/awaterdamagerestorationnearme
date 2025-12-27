@@ -1,5 +1,6 @@
 import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { CA_LOCATIONS, OR_LOCATIONS, WA_LOCATIONS, TX_LOCATIONS, FL_LOCATIONS, EAST_LOCATIONS, MID_ATLANTIC_LOCATIONS, MIDWEST_LOCATIONS, SOUTHWEST_LOCATIONS } from "@/lib/locations";
 
 // Helper: Convert slug "austin-tx" to "Austin, TX"
@@ -156,7 +157,14 @@ export default function Home() {
               <div className="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-white rounded-3xl opacity-50 blur-lg"></div>
               <div className="relative bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="h-16 w-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">A</div>
+                  <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-slate-100 bg-white">
+                    <Image
+                      src="/logo.png"
+                      alt="A Water Damage Restoration"
+                      fill
+                      className="object-contain p-1"
+                    />
+                  </div>
                   <div>
                     <div className="font-bold text-lg">A Water Damage Restoration</div>
                     <div className="text-yellow-400 flex text-sm">★★★★★ (5.0)</div>

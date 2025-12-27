@@ -43,10 +43,10 @@ async function main() {
                 },
             });
             process.stdout.write('✅ '); // Progress indicator
-            successCount++;
         } catch (error: any) {
             process.stdout.write('❌ ');
             console.error(`\nError indexing ${url}:`, error.message);
+            fs.appendFileSync('error.log', `Error indexing ${url}: ${error.message}\n`);
             errorCount++;
         }
 

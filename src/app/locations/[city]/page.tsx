@@ -39,35 +39,95 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Helper: Get state-specific content
 function getStateInfo(citySlug: string) {
-    if (!citySlug) return {
-        region: "California",
+    const parts = citySlug.split("-");
+    const state = parts[parts.length - 1]?.toLowerCase();
+
+    // Default Generic
+    const genericInfo = {
+        region: "Local",
         alert: "Emergency Response Teams",
-        climate: "In California, sudden storms and flash floods can cause devastating damage. We understand the local terrain and building codes.",
-        common_issues: ["Flash flooding recovery", "Mudslide cleanup support", "Burst pipes (dry rot)", "Coastal storm surges"]
+        climate: "Water damage can happen unexpectedly. We provide rapid localized extraction and drying for all property types.",
+        common_issues: ["Burst pipe emergency", "Appliance leak cleanup", "Sewage backup removal", "Mold prevention"]
     };
 
-    if (citySlug.endsWith("-wa")) {
-        return {
-            region: "Washington",
-            alert: "Storm & Flood Recovery Teams",
-            climate: "While the Pacific Northwest is known for rain, sudden storms and basement flooding require expert attention. We specialize in sump pump failures and heavy rain saturation.",
-            common_issues: ["Basement flooding from heavy rains", "Sump pump failures", "Mold growth from moisture", "Storm drain backups"]
-        };
-    } else if (citySlug.endsWith("-or")) {
-        return {
-            region: "Oregon",
-            alert: "Valley Flood Response",
-            climate: "Oregon's seasonal rainfall can overwhelm drainage systems. We provide specialized drying for crawl spaces and basements common in the region.",
-            common_issues: ["Crawl space water damage", "River flooding response", "Roof leaks from moss/debris", "Groundwater saturation"]
-        };
-    } else {
-        // Default to CA
-        return {
+    switch (state) {
+        // West Coast
+        case 'ca': return {
             region: "California",
-            alert: "Emergency Response Teams",
-            climate: "In California, sudden storms and flash floods can cause devastating damage. We understand the local terrain and building codes.",
+            alert: "CA Flood Response",
+            climate: "California's diverse climate brings risks from coastal storms to sudden flash floods. We handle everything from mudflow cleanup to pipe bursts.",
             common_issues: ["Flash flooding recovery", "Mudslide cleanup support", "Burst pipes (dry rot)", "Coastal storm surges"]
         };
+        case 'wa': return {
+            region: "Washington",
+            alert: "WA Storm Response",
+            climate: "The Pacific Northwest's heavy rainfall puts constant pressure on foundations and basements. We specialize in sump pump failures and saturation drying.",
+            common_issues: ["Basement flooding", "Sump pump failure", "Mold from humidity", "Storm drain backup"]
+        };
+        case 'or': return {
+            region: "Oregon",
+            alert: "OR Flood Response",
+            climate: "Oregon's seasonal rainfall can overwhelm drainage systems. We provide specialized drying for crawl spaces and basements common in the region.",
+            common_issues: ["Crawl space drying", "River flooding", "Roof leaks (moss)", "Groundwater intrusion"]
+        };
+
+        // South
+        case 'tx': return {
+            region: "Texas",
+            alert: "TX Storm Team",
+            climate: "From Gulf hurricanes to sudden freezes, Texas weather is unpredictable. We are equipped for everything from storm surge extraction to frozen pipe bursts.",
+            common_issues: ["Frozen pipe bursts", "Hurricane/Storm damage", "Slab leaks", "Flash flood cleanup"]
+        };
+        case 'fl': return {
+            region: "Florida",
+            alert: "FL Hurricane Response",
+            climate: "High humidity and tropical storms make Florida properties vulnerable to rapid mold growth. Our teams focus on fast extraction and aggressive dehumidification.",
+            common_issues: ["Hurricane damage", "Tropical storm flooding", "Mold remediation", "AC unit leaks"]
+        };
+
+        // East Coast & Northeast
+        case 'ny':
+        case 'nj':
+        case 'pa':
+        case 'ma': return {
+            region: "Northeast",
+            alert: "Northeast Response",
+            climate: "Freezing winters and older infrastructure often lead to pipe bursts and basement floods. We specialize in frozen pipe recovery and historic building drying.",
+            common_issues: ["Frozen pipe bursts", "Ice dam leaks", "Basement flooding", "Old plumbing failure"]
+        };
+
+        // Mid-Atlantic
+        case 'va':
+        case 'nc':
+        case 'sc':
+        case 'ga': return {
+            region: "Mid-Atlantic",
+            alert: "Coastal Response Team",
+            climate: "The Mid-Atlantic faces a mix of hurricanes and inland flooding. We monitor weather patterns to respond immediately to coastal and river flooding.",
+            common_issues: ["Coastal flooding", "River overflow", "Hurricane cleanup", "Humidity control"]
+        };
+
+        // Midwest
+        case 'il':
+        case 'oh':
+        case 'mi': return {
+            region: "Midwest",
+            alert: "Midwest Storm Team",
+            climate: "Severe winters and spring thaws create unique water challenges. We handle frozen pipes in winter and basement seepage during spring rains.",
+            common_issues: ["Frozen water pipes", "Basement seepage", "Sump pump failure", "Spring thaw flooding"]
+        };
+
+        // Southwest
+        case 'az':
+        case 'nv':
+        case 'co': return {
+            region: "Southwest",
+            alert: "Southwest Team",
+            climate: "Monsoon storms and hard water pose sudden risks. In dry climates, unseen leaks can cause massive damage before detection. We are experts in slab leak detection.",
+            common_issues: ["Monsoon flash floods", "Slab leaks", "AC unit leaks", "Sudden pipe bursts"]
+        };
+
+        default: return genericInfo;
     }
 }
 

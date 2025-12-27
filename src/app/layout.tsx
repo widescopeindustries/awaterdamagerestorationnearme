@@ -16,6 +16,17 @@ export const metadata: Metadata = {
   description: "Immediate water damage restoration, cleanup, and removal. Licensed experts arriving in 60 mins. Direct insurance billing. Call 888-472-6447 for 24/7 emergency service.",
   keywords: "water damage restoration near me, water damage restoration service near me, water damage restoration companies near me, water damage restoration services near me, water damage restoration company near me",
   metadataBase: new URL('https://www.awaterdamagerestorationnearme.com'),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   twitter: {
     card: 'summary_large_image',
   },
@@ -45,7 +56,7 @@ export default function RootLayout({
         <div className="bg-red-600 text-white px-4 py-2 text-center relative overflow-hidden animate-pulse">
           <div className="container mx-auto font-bold flex items-center justify-center gap-2 text-sm md:text-base">
             <AlertTriangle className="h-5 w-5 shrink-0" />
-            <span className="uppercase tracking-wide">California Flood Alert: Emergency Response Teams Deployed</span>
+            <span className="uppercase tracking-wide">Emergency Alert: 24/7 Water Damage Response Teams Deployed</span>
           </div>
         </div>
         <JsonLd />
