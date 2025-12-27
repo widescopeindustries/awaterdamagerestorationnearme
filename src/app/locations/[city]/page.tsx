@@ -1,7 +1,8 @@
-import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin } from "lucide-react";
+import { Phone, CheckCircle2, ShieldCheck, Clock, Award, MapPin, Building2, Palmtree } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
+import { CITY_DETAILS } from "@/lib/city-details";
 
 
 type Props = {
@@ -27,9 +28,15 @@ function formatCity(slug: string): string {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { city: citySlug } = await params;
     const city = formatCity(citySlug);
+    const detail = CITY_DETAILS[citySlug];
+
+    const description = detail
+        ? `${detail.description} Top-rated water damage restoration in ${city}. Call 888-472-6447.`
+        : `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call 888-472-6447 for 24/7 emergency cleanup near you.`;
+
     return {
         title: `Water Damage Restoration ${city} | 24/7 Emergency Service`,
-        description: `Top-rated water damage restoration in ${city}. Rapid 60-minute response, direct insurance billing, and licensed experts. Call 888-472-6447 for 24/7 emergency cleanup near you.`,
+        description: description,
         alternates: {
             canonical: `https://www.awaterdamagerestorationnearme.com/locations/${citySlug}`,
         },
@@ -135,6 +142,7 @@ export default async function CityPage({ params }: Props) {
     const { city: citySlug } = await params;
     const city = formatCity(citySlug);
     const stateInfo = getStateInfo(citySlug);
+    const cityDetail = CITY_DETAILS[citySlug];
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -158,8 +166,7 @@ export default async function CityPage({ params }: Props) {
                     </h1>
 
                     <p className="max-w-2xl mx-auto text-lg text-slate-300 mb-10">
-                        Immediate 24/7 emergency water removal and cleanup for homes and businesses in {city}.
-                        We are the top-rated local experts arriving in 60 minutes or less.
+                        {cityDetail ? cityDetail.description : `Immediate 24/7 emergency water removal and cleanup for homes and businesses in ${city}. We are the top-rated local experts arriving in 60 minutes or less.`}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -211,13 +218,34 @@ export default async function CityPage({ params }: Props) {
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                    <div className="grid md:grid-cols-2 gap-12 items-start">
                         <div className="space-y-6">
                             <h3 className="text-2xl font-bold text-slate-900">Why Choose Us in {city}?</h3>
                             <p className="text-slate-600">
                                 Water damage requires immediate action to minimize structural damage and prevent mold growth.
                                 {stateInfo.climate}
                             </p>
+
+                            {/* City Specific Details Block */}
+                            {cityDetail && (
+                                <div className="bg-blue-50/50 p-6 rounded-xl border border-blue-100 my-6">
+                                    <h4 className="font-bold text-blue-900 flex items-center gap-2 mb-3">
+                                        <Building2 className="h-5 w-5" />
+                                        Serving {city} Neighborhoods
+                                    </h4>
+                                    <p className="text-sm text-slate-700 leading-relaxed mb-4">
+                                        We are familiar with the unique property layouts in {cityDetail.neighborhoods.join(", ")} and surrounding areas.
+                                    </p>
+                                    <h4 className="font-bold text-blue-900 flex items-center gap-2 mb-3">
+                                        <Palmtree className="h-5 w-5" />
+                                        Local Landmarks
+                                    </h4>
+                                    <p className="text-sm text-slate-700 leading-relaxed">
+                                        Our teams can easily navigate near {cityDetail.landmarks.join(", ")} to reach you faster.
+                                    </p>
+                                </div>
+                            )}
+
                             <ul className="space-y-4">
                                 {[
                                     `Rapid response throughout ${city} area`,
