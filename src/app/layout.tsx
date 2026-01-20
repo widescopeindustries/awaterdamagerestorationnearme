@@ -73,6 +73,7 @@ export default function RootLayout({
               It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed.
             </p>
             <div className="mt-6 flex justify-center gap-6 text-sm text-slate-400 mb-8">
+              <Link href="/locations" className="hover:text-white transition-colors">Service Areas</Link>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
             </div>

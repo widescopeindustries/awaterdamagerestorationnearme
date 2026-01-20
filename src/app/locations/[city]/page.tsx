@@ -138,11 +138,59 @@ function getStateInfo(citySlug: string) {
     }
 }
 
+// Helper: Deterministic pseudo-random number generator based on string
+function getDeterministicIndex(str: string, max: number): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0; // Convert to 32bit integer
+    }
+    return Math.abs(hash) % max;
+}
+
+// Helper: Generate varied generic descriptions
+function generateGenericDescription(city: string, stateInfo: any, slug: string) {
+    const openers = [
+        `Immediate 24/7 emergency water removal and cleanup for homes and businesses in ${city}.`,
+        `Professional water damage restoration experts serving ${city} and surrounding areas.`,
+        `Disaster strikes unexpectedly. Our ${city} recovery team is ready 24/7.`,
+        `Top-rated flood and leak restoration services available immediately in ${city}.`,
+        `Rapid water extraction and drying for residential properties in ${city}.`
+    ];
+
+    const middles = [
+        `We are the top-rated local experts arriving in 60 minutes or less.`,
+        `Our licensed technicians are on standby to reach you within the hour.`,
+        `Don't let water damage spread. We arrive fast to extract, dry, and restore.`,
+        `We handle insurance billing directly and ensure your property is dry and safe.`,
+        `Equipped with industrial-grade drying tech to save your floors and walls.`
+    ];
+
+    const closers = [
+        `Call 888-472-6447 for a free estimate and rapid dispatch.`,
+        `Contact us now at 888-472-6447 for immediate assistance.`,
+        `Expert help is just a phone call away: 888-472-6447.`,
+        `Call 888-472-6447 to speak with a restoration specialist now.`,
+        `Dial 888-472-6447 for 24/7 emergency service.`
+    ];
+
+    // Use deterministic indices so the content is consistent for a specific city but varies across cities
+    const i1 = getDeterministicIndex(slug + "open", openers.length);
+    const i2 = getDeterministicIndex(slug + "mid", middles.length);
+    const i3 = getDeterministicIndex(slug + "close", closers.length);
+
+    return `${openers[i1]} ${middles[i2]} ${stateInfo.climate} ${closers[i3]}`;
+}
+
 export default async function CityPage({ params }: Props) {
     const { city: citySlug } = await params;
     const city = formatCity(citySlug);
     const stateInfo = getStateInfo(citySlug);
     const cityDetail = CITY_DETAILS[citySlug];
+    
+    // Generate dynamic content if no specific detail exists
+    const dynamicDescription = generateGenericDescription(city, stateInfo, citySlug);
+    const displayDescription = cityDetail ? cityDetail.description : dynamicDescription;
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -166,7 +214,7 @@ export default async function CityPage({ params }: Props) {
                     </h1>
 
                     <p className="max-w-2xl mx-auto text-lg text-slate-300 mb-10">
-                        {cityDetail ? cityDetail.description : `Immediate 24/7 emergency water removal and cleanup for homes and businesses in ${city}. We are the top-rated local experts arriving in 60 minutes or less.`}
+                        {displayDescription}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
